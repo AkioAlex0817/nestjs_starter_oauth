@@ -1,5 +1,6 @@
 import { config } from 'dotenv';
 import { logger } from './logger';
+import * as process from 'process';
 
 config();
 
@@ -23,4 +24,11 @@ export const DATABASE_CONFIG = {
 };
 
 export const JWT_SECRET = process.env.JWT_SECRET || '';
-console.log('host: ', DATABASE_CONFIG.host);
+console.log('HOST: ', DATABASE_CONFIG.host);
+
+export const MAIL_HOST = process.env.MAIL_HOST || '';
+export const MAIL_PORT = process.env.MAIL_PORT || 2525;
+export const MAIL_USERNAME = process.env.MAIL_USERNAME || '';
+export const MAIL_PASSWORD = process.env.MAIL_PASSWORD || '';
+export const MAIL_FROM_ADDRESS = process.env.MAIL_FROM_ADDRESS || '';
+console.log('MAIL HOST: ', MAIL_HOST);

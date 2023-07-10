@@ -9,11 +9,13 @@ import { CommonModule } from '../common/common.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from '../../database/entities/user.entity';
 import { UserDetailEntity } from '../../database/entities/user-detail.entity';
+import { EmailVerifyTokensEntity } from '../../database/entities/email-verify-tokens.entity';
+import { ForgotPasswordTokensEntity } from '../../database/entities/forgot-password-tokens.entity';
 
 @Module({
   imports: [
     JwtModule.register({}),
-    TypeOrmModule.forFeature([UserEntity, UserDetailEntity]),
+    TypeOrmModule.forFeature([UserEntity, UserDetailEntity, EmailVerifyTokensEntity, ForgotPasswordTokensEntity]),
     CommonModule,
     ConfigModule,
     PassportModule,

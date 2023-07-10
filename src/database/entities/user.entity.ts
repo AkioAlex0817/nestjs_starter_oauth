@@ -1,5 +1,6 @@
 import { Column, CreateDateColumn, Entity, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { UserDetailEntity } from './user-detail.entity';
+import { OfficeEntity } from './office.entity';
 
 @Entity({ name: 'user' })
 export class UserEntity {
@@ -15,8 +16,23 @@ export class UserEntity {
   @Column({ name: 'password', nullable: true })
   password: string;
 
+  @Column({ name: 'device_token', nullable: true })
+  deviceToken: string;
+
+  @Column({ name: 'device_name', nullable: true })
+  deviceName: string;
+
+  @Column({ name: 'platform', nullable: true })
+  platform: string;
+
   @Column({ default: false })
   active: boolean;
+
+  @Column({ default: false })
+  verified: boolean;
+
+  @Column({ name: 'verified_at', type: 'timestamptz', nullable: true })
+  verifiedAt: Date;
 
   @Column({ name: 'access_token', nullable: true })
   accessToken: string;
@@ -38,4 +54,7 @@ export class UserEntity {
 
   @OneToOne(() => UserDetailEntity, (userDetail) => userDetail.user)
   userDetail: UserDetailEntity;
+
+  @OneToOne(() => OfficeEntity, (userOffice) => userOffice.user)
+  userOffice: OfficeEntity;
 }

@@ -12,7 +12,7 @@ import { UserEntity } from './user.entity';
 @Entity({ name: 'user_detail' })
 export class UserDetailEntity {
   @PrimaryGeneratedColumn({ type: 'bigint' })
-  id?: number;
+  id: number;
 
   @Column({ name: 'user_id', type: 'bigint' })
   userId: number;
@@ -26,20 +26,11 @@ export class UserDetailEntity {
   @Column({ name: 'contact_number', nullable: true })
   contactNumber: string;
 
-  @Column({ name: 'address', nullable: true })
-  address: string;
+  @Column({ name: 'birthday', type: 'timestamptz', nullable: true })
+  birthday: Date;
 
-  @Column({ name: 'city', nullable: true })
-  city: string;
-
-  @Column({ name: 'state', nullable: true })
-  state: string;
-
-  @Column({ name: 'zip', nullable: true })
-  zip: string;
-
-  @Column({ name: 'country', nullable: true })
-  country: string;
+  @Column({ name: 'avatar', nullable: true })
+  avatar: string;
 
   @CreateDateColumn({ name: 'created_at', type: 'timestamptz' })
   createdAt?: Date;
@@ -49,5 +40,5 @@ export class UserDetailEntity {
 
   @OneToOne(() => UserEntity)
   @JoinColumn({ name: 'user_id' })
-  user?: UserEntity;
+  user: UserEntity;
 }
